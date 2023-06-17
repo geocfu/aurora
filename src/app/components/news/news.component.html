@@ -1,4 +1,8 @@
-<h1>News</h1>
+<h1
+  class="mt-2 mb-6 text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl"
+>
+  Y | Hacker News
+</h1>
 
 <ng-container
   *ngIf="
@@ -10,15 +14,15 @@
 
 <ng-template #topStoriesAreAvailable>
   <ul role="list" class="divide-y divide-gray-100">
-    <li
-      *ngFor="let topStoryId of topStoryIds"
-      class="flex justify-between gap-x-6 py-5"
-    >
-      <app-story [storyId]="topStoryId"></app-story>
+    <li *ngFor="let topStoryId of topStoryIds">
+      <app-story
+        [storyId]="topStoryId"
+        class="relative flex justify-between gap-x-6 py-5"
+      ></app-story>
     </li>
   </ul>
 </ng-template>
 
 <ng-template #topStoriesAreNotAvailable>
-  <p>The condition is false.</p>
+  <p>No Available stories</p>
 </ng-template>
