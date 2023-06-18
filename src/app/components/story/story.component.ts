@@ -11,6 +11,7 @@ export class StoryComponent implements OnInit {
   @Input() idx: number = -1;
 
   loading: boolean = true;
+  isVisited: boolean = false;
 
   story: Story = {
     by: '',
@@ -35,5 +36,9 @@ export class StoryComponent implements OnInit {
         this.story = story;
         this.loading = false;
       });
+  }
+
+  markAsVisited(): void {
+    this.isVisited = true;
   }
 }

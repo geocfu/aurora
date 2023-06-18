@@ -7,9 +7,11 @@
     <div class="min-w-0 flex-auto">
       <p class="text-sm font-semibold leading-6 text-gray-900">
         <span class="text-gray-500">{{ idx + 1 }}.</span>
-        <a [href]="story.url" target="_blank">
+        <a [href]="story.url" target="_blank" (click)="markAsVisited()">
           <span class="absolute inset-x-0 -top-px bottom-0"></span>
-          {{ story.title }}
+          <span [ngClass]="{ 'text-gray-500': isVisited }">
+            {{ story.title }}
+          </span>
         </a>
       </p>
       <p class="flex text-xs leading-5 text-gray-500">

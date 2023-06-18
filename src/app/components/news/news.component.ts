@@ -6,8 +6,8 @@ import { YCombinatorNewsService } from 'src/app/services/y-combinator-news.servi
   templateUrl: './news.component.html',
 })
 export class NewsComponent implements OnInit {
-  public topStoryIds: number[] = [];
-  public loading: boolean = true;
+  topStoryIds: number[] = [];
+  loading: boolean = true;
 
   constructor(
     private readonly _yCombinatorNewsService: YCombinatorNewsService
