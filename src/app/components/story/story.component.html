@@ -1,28 +1,39 @@
-<div class="flex gap-x-4">
-  <div class="min-w-0 flex-auto">
-    <p class="text-sm font-semibold leading-6 text-gray-900">
-      <a [href]="story.url" target="_blank">
-        <span class="absolute inset-x-0 -top-px bottom-0"></span>
-        {{ story.title }}
-      </a>
-    </p>
-    <p class="mt-1 flex text-xs leading-5 text-gray-500">
-      {{ story.score }} points by {{ story.by }},
-      {{ story.time * 1000 | moment }}
-    </p>
+<ng-container
+  *ngIf="!loading; then storyIsAvailable; else storyIsNotAvailable"
+></ng-container>
+
+<ng-template #storyIsAvailable>
+  <div class="flex gap-x-4">
+    <div class="min-w-0 flex-auto">
+      <p class="text-sm font-semibold leading-6 text-gray-900">
+        <span class="text-gray-500">{{ idx + 1 }}.</span>
+        <a [href]="story.url" target="_blank">
+          <span class="absolute inset-x-0 -top-px bottom-0"></span>
+          {{ story.title }}
+        </a>
+      </p>
+      <p class="flex text-xs leading-5 text-gray-500">
+        {{ story.score }} points by {{ story.by }},
+        {{ story.time * 1000 | humanFriendlyTime }}
+      </p>
+    </div>
   </div>
-</div>
-<div class="flex items-center gap-x-4">
-  <svg
-    class="h-5 w-5 flex-none text-gray-400"
-    viewBox="0 0 20 20"
-    fill="currentColor"
-    aria-hidden="true"
-  >
-    <path
-      fill-rule="evenodd"
-      d="M7.21 14.77a.75.75 0 01.02-1.06L11.168 10 7.23 6.29a.75.75 0 111.04-1.08l4.5 4.25a.75.75 0 010 1.08l-4.5 4.25a.75.75 0 01-1.06-.02z"
-      clip-rule="evenodd"
-    />
-  </svg>
-</div>
+  <div class="flex items-center gap-x-4">
+    <svg
+      class="h-5 w-5 flex-none text-gray-400"
+      viewBox="0 0 20 20"
+      fill="currentColor"
+      aria-hidden="true"
+    >
+      <path
+        fill-rule="evenodd"
+        d="M7.21 14.77a.75.75 0 01.02-1.06L11.168 10 7.23 6.29a.75.75 0 111.04-1.08l4.5 4.25a.75.75 0 010 1.08l-4.5 4.25a.75.75 0 01-1.06-.02z"
+        clip-rule="evenodd"
+      />
+    </svg>
+  </div>
+</ng-template>
+
+<ng-template #storyIsNotAvailable>
+  <app-loading [single]="true"></app-loading>
+</ng-template>

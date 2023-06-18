@@ -1,28 +1,35 @@
-<h1
-  class="mt-2 mb-6 text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl"
->
-  Y | Hacker News
-</h1>
+<div class="bg-white py- sm:py-2">
+  <h2 class="text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl">
+    Y | Hacker News
+  </h2>
+  <p class="mt-2 mb-6 text-lg leading-8 text-gray-600">
+    An alternative, UI friendly, Hacker News frontend.
+  </p>
+</div>
 
 <ng-container
   *ngIf="
-    topStoryIds.length > 0;
+    topStoryIds.length > 0 && !loading;
     then topStoriesAreAvailable;
     else topStoriesAreNotAvailable
   "
 ></ng-container>
 
 <ng-template #topStoriesAreAvailable>
-  <ul role="list" class="divide-y divide-gray-100">
-    <li *ngFor="let topStoryId of topStoryIds">
+  <ul
+    role="list"
+    class="divide-y divide-gray-100 overflow-hidden bg-white shadow-sm ring-1 ring-gray-900/5 sm:rounded-xl"
+  >
+    <li *ngFor="let topStoryId of topStoryIds; let i = index">
       <app-story
+        [idx]="i"
         [storyId]="topStoryId"
-        class="relative flex justify-between gap-x-6 py-5"
+        class="relative flex justify-between gap-x-6 px-4 py-5 hover:bg-gray-50 sm:px-6"
       ></app-story>
     </li>
   </ul>
 </ng-template>
 
 <ng-template #topStoriesAreNotAvailable>
-  <p>No Available stories</p>
+  <app-loading [multiple]="true"></app-loading>
 </ng-template>

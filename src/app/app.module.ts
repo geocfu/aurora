@@ -8,10 +8,9 @@ import { NewsComponent } from './components/news/news.component';
 import { StoryComponent } from './components/story/story.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { HttpClientModule } from '@angular/common/http';
-import { MomentPipe } from './pipes/moment.pipe';
-
-
-// import { MomentPipe } from '../../pipes/moment.pipe';
+import { HumanFriendlyTimePipe } from './pipes/human-friendly-time.pipe';
+import { FooterComponent } from './components/footer/footer.component';
+import { LoadingComponent } from './components/loading/loading.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +18,9 @@ import { MomentPipe } from './pipes/moment.pipe';
     NewsComponent,
     StoryComponent,
     NotFoundComponent,
-    MomentPipe,
+    HumanFriendlyTimePipe,
+    FooterComponent,
+    LoadingComponent,
   ],
   imports: [
     BrowserModule,

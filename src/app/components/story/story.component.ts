@@ -8,6 +8,9 @@ import { Story } from 'src/types/Story';
 })
 export class StoryComponent implements OnInit {
   @Input() storyId: number = -1;
+  @Input() idx: number = -1;
+
+  loading: boolean = true;
 
   story: Story = {
     by: '',
@@ -22,12 +25,15 @@ export class StoryComponent implements OnInit {
   };
 
   constructor(
-    private readonly yCombinatorNewsService: YCombinatorNewsService
+    private readonly _yCombinatorNewsService: YCombinatorNewsService
   ) {}
 
   ngOnInit(): void {
-    this.yCombinatorNewsService
+    this._yCombinatorNewsService
       .getStoryById(this.storyId)
-      .subscribe((story) => (this.story = story));
+      .subscribe((story) => {
+        this.story = story;
+        this.loading = false;
+      });
   }
 }
